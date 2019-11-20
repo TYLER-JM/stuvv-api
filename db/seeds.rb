@@ -13,6 +13,6 @@ require 'faker'
 end
 
 10.times do
-  Listing.create(title: Faker::Games::Dota.hero, description: Faker::Twitter.status, user_id: rand(1..5), price_per_day: rand(100..10000), availability: true, )
+  Listing.create(title: Faker::Games::Dota.hero, description: Faker::Twitter.status, user_id: rand(1..5), price_per_day: rand(100..10000) )
 end
 

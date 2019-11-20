@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_182429) do
     t.text "description"
     t.bigint "user_id", null: false
     t.integer "price_per_day"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
