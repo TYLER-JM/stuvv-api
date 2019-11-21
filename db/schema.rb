@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_005422) do
+ActiveRecord::Schema.define(version: 2019_11_21_125848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 2019_11_21_005422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.json "conversation"
+    t.boolean "read", default: false
+    t.bigint "to_user_id"
+    t.bigint "from_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["from_user_id"], name: "index_messages_on_from_user_id"
+    t.index ["to_user_id"], name: "index_messages_on_to_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -57,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_005422) do
 
   add_foreign_key "images", "listings"
   add_foreign_key "listings", "users"
+  add_foreign_key "messages", "users", column: "from_user_id"
+  add_foreign_key "messages", "users", column: "to_user_id"
   add_foreign_key "requests", "listings"
   add_foreign_key "requests", "users"
 end
