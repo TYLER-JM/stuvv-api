@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :requests
   resources :images
   resources :listings
   resources :users
