@@ -10,6 +10,9 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   def show
+    # @listing_requests = @listing.requests.all()
+    # render json: @listing_requests
+
     render json: @listing
   end
 

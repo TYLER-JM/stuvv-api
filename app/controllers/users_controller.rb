@@ -12,9 +12,15 @@ class UsersController < ApplicationController
   def show
     # example of querying for all listings associated with a user
 
-    # @listings = @user_listings = @user.listings.all()
+    # @listings = @user.listings.all()
     # render json: @listings
-    
+
+    # @messages = @user.received_messages.all()
+    # render json: @messages
+
+    # @requests = @user.requests.all()
+    # render json: @requests
+
     render json: @user
   end
 
