@@ -10,6 +10,11 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    # example of querying for all listings associated with a user
+
+    # @listings = @user_listings = @user.listings.all()
+    # render json: @listings
+    
     render json: @user
   end
 

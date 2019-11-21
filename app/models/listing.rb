@@ -1,4 +1,4 @@
 class Listing < ApplicationRecord
   belongs_to :user
-  has_meny :images
+  has_many :images
 end
