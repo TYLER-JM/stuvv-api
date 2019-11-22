@@ -10,7 +10,9 @@ class MessagesController < ApplicationController
 
   # GET /messages/1
   def show
-    render json: @message
+    @convo = @message.conversation
+    render json: @convo
+    # render json: @message
   end
 
   # POST /messages

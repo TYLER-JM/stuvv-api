@@ -1,0 +1,13 @@
+development:
+  cloud_name: "lhl-final"
+  api_key: "369147764735645"
+  api_secret: "q-O4m3Ape2wWEfZZ6EESuR-98mY"
+  secure: true
+  cdn_subdomain: true
+
+production:
+  cloud_name: "lhl-final"
+  api_key: "369147764735645"
+  api_secret: "q-O4m3Ape2wWEfZZ6EESuR-98mY"
+  secure: true
+  cdn_subdomain: true
