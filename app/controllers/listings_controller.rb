@@ -14,18 +14,17 @@ class ListingsController < ApplicationController
     # render json: @listing_requests
     # @listing_images = @listing.pics
     # render json: @listing_images
-
-    # render json: @listing
-
-    # render 'show.json.jbuilder'
-
     
     #we don't need to return anything and when fetching the route show, do as http://localhost:3000/listings/4.json and it will render the jbuilder file I added 
     #or add render 'show.json.jbuilder' and fetch http://localhost:3000/listings/4 (withouth .json in the end)
     # DELETE this after reading!!!
-
+    
     # @list = Listing.joins("INNER JOIN images ON images.listing_id = listings.id AND images.listing_id = '4'")
 
+    @pic = Listing.images.all()
+    
+    # render 'show.json.jbuilder'
+    render json: @pic
   end
 
   # POST /listings
