@@ -24,35 +24,53 @@ class ListingsController < ApplicationController
     #or add render 'show.json.jbuilder' and fetch http://localhost:3000/listings/4 (withouth .json in the end)
     # DELETE this after reading!!!
 
+    # @list = Listing.joins("INNER JOIN images ON images.listing_id = listings.id AND images.listing_id = '4'")
+
   end
 
   # POST /listings
   def create
 
-    new_params = {
-      title: params[:title],
-      user_id: params[:user_id],
-      pics: [params[:pics]]
-    }
-    @listing = Listing.new(new_params)
-    # puts @listing
+    # new_params = {
+    #   title: params[:title],
+    #   user_id: params[:user_id],
+    #   pics: [params[:pics]]
+    # }
+    @listing = Listing.new(listing_params)
+    puts @listing
 
-    #save the listing first ot get the ID
+    #save the listing first to get the ID
 
-    # if @listing.save
-    #   render json: @listing, status: :created, location: @listing
-    #   # respond_to do |format|
-    #   #   format.json { }
-    # else
-    #   render json: @listing.errors, status: :unprocessable_entity
-    # end
+    if @listing.save
+      render json: @listing, status: :created, location: @listing
+      # respond_to do |format|
+      #   format.json { }
+    else
+      render json: @listing.errors, status: :unprocessable_entity
+    end
 
+    # puts @listing.user_id
     #do a block to loop over every image, upload to the cloud, get the link out of it and then add the info to the images table
     cloud = Cloudinary::Uploader.upload(params[:pics].tempfile.path)
-    puts cloud
+    # puts cloud
+    # puts cloud["secure_url"]
+    # puts @listing.id
 
     #something like
-    @images = Image.new(cloud.secure_url, @listing.id)
+    image_params = {
+      url: cloud["secure_url"],
+      listing_id: @listing.id
+    }
+    puts image_params
+    @image = Image.new(image_params )
+
+    if @image.save
+      render json: @image, status: :created, location: @image
+      # respond_to do |format|
+      #   format.json { }
+    else
+      render json: @image.errors, status: :unprocessable_entity
+    end
 
     #then return JSON? not sure...
     
