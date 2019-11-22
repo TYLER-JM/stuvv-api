@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
   include Rails.application.routes.url_helpers
 
   def pics_urls
-    pics.collect {|pic| rails_blob_path(pic, only_path: true)}
+    pics.collect {|pic| rails_blob_path(pic, disposition: "attachment", only_path: true)}
   end
 
 end

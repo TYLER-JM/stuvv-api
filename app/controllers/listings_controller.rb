@@ -15,7 +15,15 @@ class ListingsController < ApplicationController
     # @listing_images = @listing.pics
     # render json: @listing_images
 
-    render json: @listing
+    # render json: @listing
+
+    # render 'show.json.jbuilder'
+
+    
+    #we don't need to return anything and when fetching the route show, do as http://localhost:3000/listings/4.json and it will render the jbuilder file I added 
+    #or add render 'show.json.jbuilder' and fetch http://localhost:3000/listings/4 (withouth .json in the end)
+    # DELETE this after reading!!!
+
   end
 
   # POST /listings
