@@ -28,20 +28,34 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
+
     new_params = {
       title: params[:title],
       user_id: params[:user_id],
       pics: [params[:pics]]
     }
     @listing = Listing.new(new_params)
+    # puts @listing
 
-    if @listing.save
-      render json: @listing, status: :created, location: @listing
-      # respond_to do |format|
-      #   format.json { }
-    else
-      render json: @listing.errors, status: :unprocessable_entity
-    end
+    #save the listing first ot get the ID
+
+    # if @listing.save
+    #   render json: @listing, status: :created, location: @listing
+    #   # respond_to do |format|
+    #   #   format.json { }
+    # else
+    #   render json: @listing.errors, status: :unprocessable_entity
+    # end
+
+    #do a block to loop over every image, upload to the cloud, get the link out of it and then add the info to the images table
+    cloud = Cloudinary::Uploader.upload(params[:pics].tempfile.path)
+    puts cloud
+
+    #something like
+    @images = Image.new(cloud.secure_url, @listing.id)
+
+    #then return JSON? not sure...
+    
   end
 
   # PATCH/PUT /listings/1
@@ -73,7 +87,7 @@ class ListingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_params
-      params.permit(:title, :description, :user_id, :price_per_day, :availability, pics: [])
+      params.permit(:title, :description, :user_id, :price_per_day, :availability)
       # params.required(:listing).permit(:title, :description, :user_id, :price_per_day, :availability, pics: [])
     end
 end
