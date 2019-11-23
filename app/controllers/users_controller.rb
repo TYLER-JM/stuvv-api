@@ -28,11 +28,25 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    # jungle example
+    # if @user.save
+    #   session[:user_id] = @user.id
+    #   redirect_to :root, notice: 'Account created successfully'
+    # else
+    #   flash[:error] = 'An error occured!'
+    #   redirect_to '/users/new'
+    # end
+    # puts @user
+
     if @user.save
+      session[:user_id] = @user.id
       render json: @user, status: :created, location: @user
     else
+      puts "HUGE ERROR"
       render json: @user.errors, status: :unprocessable_entity
     end
+    puts @user
+
   end
 
   # PATCH/PUT /users/1
