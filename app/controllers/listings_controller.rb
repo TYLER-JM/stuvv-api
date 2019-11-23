@@ -25,21 +25,25 @@ class ListingsController < ApplicationController
     end
 
     #do a block to loop over every image, upload to the cloud, get the link out of it and then add the info to the images table
-    cloud = Cloudinary::Uploader.upload(params[:pics].tempfile.path)
+    par = params[:pics]
     
-    image_params = {
-      url: cloud["secure_url"],
-      listing_id: @listing.id
-    }
-    
-    @image = Image.new(image_params)
+    par.each do |pic|
+      cloud = Cloudinary::Uploader.upload(pic.tempfile.path)
+      
+      image_params = {
+        url: cloud["secure_url"],
+        listing_id: @listing.id
+      }
+      
+      @image = Image.new(image_params)
 
-    if @image.save
-      nil
-    else
-      render json: @image.errors, status: :unprocessable_entity
+      if @image.save
+        nil
+      else
+        render json: @image.errors, status: :unprocessable_entity
+      end
     end
-
+  
     render 'show.json.jbuilder'
     
   end
