@@ -16,6 +16,9 @@ end
 10.times do
   Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: rand(1..5), price_per_day: rand(100..10000) )
 end
+10.times do
+  Image.create(url: Faker::LoremPixel.image(size: "300x300", is_gray: false, category: 'technics'), listing_id: rand(1..10) )
+end
 
 Request.create!(listing_id: 1, user_id: 2, start_date: Time.new(2019, 11, 25), end_date: Time.new(2019, 11, 30))
 Request.create!(listing_id: 2, user_id: 3, start_date: Time.new(2019, 11, 26), end_date: Time.new(2019, 11, 27))
