@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :listings
   resources :users
 
-  resources :sessions, only: [:new, :create, :destroy] 
-  # get '/sessions' => 'sessions#destroy'
+  resources :sessions, only: [:new, :create] 
+  get '/sessions' => 'sessions#destroy'
+  post '/search' => 'listings#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
