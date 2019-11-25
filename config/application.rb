@@ -26,15 +26,23 @@ module StuvvApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        # origins '*'
+        origins 'localhost:3001'
+        # resource 'localhost:3001', headers: :any, methods: [:get, :post, :options], credentials: true
+        resource '*', headers: :any, methods: [:get, :post, :options], credentials: true, expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
+
       end
     end
+    config.session_store :cookie_store, key: "session"
+
+
 
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
-    Rails.application.config.session_store :cookie_store, key: '_stuvv_session'
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+    # Rails.application.config.session_store :cookie_store, key: 'session', httponly: false
 
+
+    # Rails.application.config.session_store :cookie_store, key: '_stuvv_session', httponly: false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
