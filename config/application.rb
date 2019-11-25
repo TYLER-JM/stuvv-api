@@ -33,8 +33,7 @@ module StuvvApi
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    Rails.application.config.session_store :cookie_store, key: '_stuvv_session'
-
+    # Rails.application.config.session_store :cookie_store, key: '_stuvv_session', httponly: false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
