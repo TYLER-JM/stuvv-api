@@ -30,7 +30,7 @@ class ListingsController < ApplicationController
       render json: @listing.errors, status: :unprocessable_entity
     end
 
-    #do a block to loop over every image, upload to the cloud, get the link out of it and then add the info to the images table
+    
     par = params[:pics]
     
     par.each do |pic|
@@ -48,6 +48,7 @@ class ListingsController < ApplicationController
       else
         render json: @image.errors, status: :unprocessable_entity
       end
+      
     end
   
     render 'show.json.jbuilder'
