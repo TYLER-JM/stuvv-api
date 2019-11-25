@@ -33,7 +33,7 @@ module StuvvApi
 
       end
     end
-    config.session_store :cookie_store, key: "session"#, domain: "localhost:3001"
+    config.session_store :cookie_store, key: "session"
 
 
 
