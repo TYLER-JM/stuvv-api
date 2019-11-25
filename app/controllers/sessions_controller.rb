@@ -11,8 +11,10 @@ class SessionsController < ApplicationController
   pp @user
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
+      # cookies[:user_id] = @user.id
+      # byebug
       session[:user_id] = @user.id
-      render json: @user, status: :created, location: @user
+      render json: @user
     else
       puts "HUGE ERROR ON LOGIN"
       render json: @user.errors, status: :unprocessable_entity
