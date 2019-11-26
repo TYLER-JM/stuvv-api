@@ -13,6 +13,11 @@ class ListingsController < ApplicationController
     render 'index.json.jbuilder'
   end
 
+  # def users_listings
+  #   @listings = @user.listings.all()
+  #   render json: @listings
+  # end
+
   # GET /listings/1
   def show
     render 'show.json.jbuilder'
