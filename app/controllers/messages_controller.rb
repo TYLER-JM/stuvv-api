@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :update, :destroy]
+  # before_action :set_message, only: [:show, :update, :destroy]
 
   # GET /messages
   def index
@@ -9,8 +9,10 @@ class MessagesController < ApplicationController
   end
 
   # GET /messages/1
+  # now returning the message object relating to the to_user_id
   def show
-    @convo = @message.conversation
+    @convo = Message.where(to_user_id: params[:id])
+    # @convo = @message.conversation
     render json: @convo
     # render json: @message
   end
