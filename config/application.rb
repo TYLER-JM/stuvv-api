@@ -33,13 +33,13 @@ module StuvvApi
 
       end
     end
-    config.session_store :cookie_store, key: "session"
+    # config.session_store :cookie_store, key: "session"
 
 
 
+    Rails.application.config.session_store :cookie_store, key: 'session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
-    # Rails.application.config.session_store :cookie_store, key: 'session', httponly: false
 
 
     # Rails.application.config.session_store :cookie_store, key: '_stuvv_session', httponly: false
