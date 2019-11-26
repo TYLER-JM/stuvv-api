@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/1
+  # GET requests associated with a certain user
   def show
     # render json: @request
 
