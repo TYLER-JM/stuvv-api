@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :users_listings]
 
   # GET /users
   def index
@@ -7,6 +7,14 @@ class UsersController < ApplicationController
 
     render json: @users
   end
+
+  def users_listings
+    @listings = @user.listings.all()
+    # render json: @listings
+    # render 'show.json.jbuilder'
+    render 'index.json.jbuilder'
+  end
+
 
   # GET /users/1
   def show
@@ -19,8 +27,6 @@ class UsersController < ApplicationController
     # @requests = @user.requests.all()
     # render json: @requests
     
-    # @listings = @user.listings.all()
-    # render json: @listings
     render json: @user
   end
 
