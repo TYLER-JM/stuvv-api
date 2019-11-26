@@ -2,8 +2,14 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :update, :destroy]
 
   # GET /listings
-  def index
-    @listings = Listing.all
+  def index   
+    search = params[:search]
+    if search
+      @listings = Listing.where("lower(description) LIKE lower(:search) OR lower(title) LIKE lower(:search)", search: "%#{search}%")
+    else 
+      @listings = Listing.all
+    end
+
     render 'index.json.jbuilder'
   end
 
