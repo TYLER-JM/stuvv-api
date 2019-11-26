@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       # cookies[:user_id] = @user.id
       # byebug
       session[:user_id] = @user.id
+      puts session[:user_id]
       render json: @user
     else
       puts "HUGE ERROR ON LOGIN"
@@ -23,15 +24,21 @@ class SessionsController < ApplicationController
     end
   end
 
+    
+      
+
   def destroy
     session[:user_id] = nil
-    redirect_to '/sessions/new'
+    render json: {}
   end
 
   def me
+    puts "SESSION IS"
+    puts session[:user_id]  
     if session[:user_id]
       render json: User.find(session[:user_id])
     else
+      # render json: false
       render status: 403, json: { error: :unauthorized }
     end
   end
