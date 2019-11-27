@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
     if search
       @listings = Listing.where("lower(description) LIKE lower(:search) OR lower(title) LIKE lower(:search)", search: "%#{search}%")
     else 
-      @listings = Listing.all
+      @listings = Listing.order(updated_at: :desc)
     end
 
     render 'index.json.jbuilder'

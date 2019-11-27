@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def users_listings
-    @listings = @user.listings.all()
+    @listings = @user.listings.order(updated_at: :desc)
     # render json: @listings
     # render 'show.json.jbuilder'
     render 'index.json.jbuilder'
