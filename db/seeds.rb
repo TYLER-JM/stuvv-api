@@ -28,10 +28,10 @@ Request.create!(listing_id: 2, user_id: 1, start_date: Time.new(2019, 12, 6), en
 
 
 conversation1 = [
-  {"sender": "1", "content": "hi I want to rent your bike", "sent": Time.now()},
-  {"sender": "2", "content": "no thanks, its not back", "sent": Time.now()},
-  {"sender": "1", "content": "I will check back later", "sent": Time.now()},
-  {"sender": "2", "content": "please do, bye now", "sent": Time.now()}
+  {"sender": "2", "content": "hi I want to rent your bike", "sent": Time.now()},
+  {"sender": "5", "content": "no thanks, its not back", "sent": Time.now()},
+  {"sender": "2", "content": "I will check back later", "sent": Time.now()},
+  {"sender": "5", "content": "please do, bye now", "sent": Time.now()}
 ]
 @user1 = User.find(1)
 @user2 = User.find(2)
@@ -42,5 +42,5 @@ conversation2 = [
   {"sender": "5", "content": "take good care of her", "sent": Time.now()}
 ]
 
-Message.create!(conversation: conversation1.to_json, from_user_id: 2, to_user_id: 1)
+Message.create!(conversation: conversation1.to_json, from_user_id: 2, to_user_id: 5)
 Message.create!(conversation: conversation2.to_json, from_user_id: 3, to_user_id: 5)
