@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  # before_action :set_message, only: [:show, :update, :destroy]
+  before_action :set_message, only: [ :update, :destroy]
 
   # GET /messages
   def index
@@ -30,7 +30,9 @@ class MessagesController < ApplicationController
 
   # PATCH/PUT /messages/1
   def update
-    if @message.update(message_params)
+    pp params[:message]
+    # @message = Message.find(params[:id])
+    if @message.update(conversation: params[:message])
       render json: @message
     else
       render json: @message.errors, status: :unprocessable_entity
@@ -50,6 +52,7 @@ class MessagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def message_params
+      # params.permit(:conversation, :read)
       params.require(:message).permit(:conversation, :read)
     end
 end
