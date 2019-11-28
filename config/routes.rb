@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   get '/profiles/me' => 'sessions#me'
   # get '/userslistings/:id' => 'listings#users_listings'
   get '/userslistings/:id' => 'users#users_listings'
+
+  get '/usersrequests/:id' => 'users#users_requests'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
