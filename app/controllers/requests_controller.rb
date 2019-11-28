@@ -9,11 +9,9 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/1
-  # GET requests associated with a certain user
+  # GET requests associated with a  with a single listing
   def show
-    # render json: @request
-
-    # now returning all requests associated with a single listing
+    
     @all_listing_requsts = Request.where(listing_id: params[:id])
     render json: @all_listing_requsts
   end

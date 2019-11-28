@@ -11,10 +11,12 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # now returning the message object relating to the to_user_id
   def show
+    # ORIGINAL QUERY
+    # @convo = Message.where(to_user_id: params[:id])
+    # render json: @convo
+
     @convo = Message.where(to_user_id: params[:id])
-    # @convo = @message.conversation
-    render json: @convo
-    # render json: @message
+    render 'show.json.jbuilder'
   end
 
   # POST /messages
