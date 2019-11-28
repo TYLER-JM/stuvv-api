@@ -5,4 +5,5 @@ class Message < ApplicationRecord
   #added
   # belongs_to :listing
   has_one :request
+  has_one :listing, through: :request
 end
