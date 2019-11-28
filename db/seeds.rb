@@ -34,43 +34,46 @@ end
 
 @user1 = User.find(1)
 @user2 = User.find(2)
+@user3 = User.find(3)
+@user4 = User.find(4)
+@user5 = User.find(5)
 
 conversation1 = [
-  {"sender": "2", "content": "hi I want to rent your bike", "sent": Time.now()},
-  {"sender": "1", "content": "no thanks, its not back", "sent": Time.now()},
-  {"sender": "2", "content": "I will check back later", "sent": Time.now()},
-  {"sender": "1", "content": "please do, bye now", "sent": Time.now()}
+  {"sender": @user2.first_name, "content": "hi I want to rent your bike", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "no thanks, its not back", "sent": Time.now()},
+  {"sender": @user2.first_name, "content": "I will check back later", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "please do, bye now", "sent": Time.now()}
 ]
 conversation2 = [
-  {"sender": "3", "content": "im interested in your bbq", "sent": Time.now()},
-  {"sender": "1", "content": "its available", "sent": Time.now()},
-  {"sender": "3", "content": "thats great, thanks", "sent": Time.now()},
-  {"sender": "1", "content": "take good care of her", "sent": Time.now()}
+  {"sender": @user3.first_name, "content": "im interested in your bbq", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "its available", "sent": Time.now()},
+  {"sender": @user3.first_name, "content": "thats great, thanks", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "take good care of her", "sent": Time.now()}
 ]
 conversation3 = [
-  {"sender": "4", "content": "is it available to rent", "sent": Time.now()},
-  {"sender": "2", "content": "its available", "sent": Time.now()},
-  {"sender": "4", "content": "thats great, thanks", "sent": Time.now()},
-  {"sender": "2", "content": "take good care the thing you rent", "sent": Time.now()}
+  {"sender": @user4.first_name, "content": "is it available to rent", "sent": Time.now()},
+  {"sender": @user2.first_name, "content": "its available", "sent": Time.now()},
+  {"sender": @user4.first_name, "content": "thats great, thanks", "sent": Time.now()},
+  {"sender": @user2.first_name, "content": "take good care the thing you rent", "sent": Time.now()}
 ]
 conversation4 = [
-  {"sender": "4", "content": "can I rent please", "sent": Time.now()},
-  {"sender": "1", "content": "its available", "sent": Time.now()},
-  {"sender": "4", "content": "I don't want it", "sent": Time.now()},
-  {"sender": "1", "content": "why not", "sent": Time.now()}
+  {"sender": @user4.first_name, "content": "can I rent please", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "its available", "sent": Time.now()},
+  {"sender": @user4.first_name, "content": "I don't want it", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "why not", "sent": Time.now()}
 ]
 conversation5 = [
-  {"sender": "5", "content": "I think it doesn't look good", "sent": Time.now()},
-  {"sender": "1", "content": "it works fine", "sent": Time.now()},
-  {"sender": "5", "content": "I'm not interesting", "sent": Time.now()},
-  {"sender": "1", "content": "fine bye", "sent": Time.now()}
+  {"sender": @user5.first_name, "content": "I think it doesn't look good", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "it works fine", "sent": Time.now()},
+  {"sender": @user5.first_name, "content": "I'm not interesting", "sent": Time.now()},
+  {"sender": @user1.first_name, "content": "fine bye", "sent": Time.now()}
 ]
 
 Message.create!(conversation: conversation1.to_json, from_user_id: 2, to_user_id: 1)
 Message.create!(conversation: conversation2.to_json, from_user_id: 3, to_user_id: 1)
-Message.create!(conversation: conversation2.to_json, from_user_id: 4, to_user_id: 2)
-Message.create!(conversation: conversation2.to_json, from_user_id: 4, to_user_id: 1)
-Message.create!(conversation: conversation2.to_json, from_user_id: 5, to_user_id: 1)
+Message.create!(conversation: conversation3.to_json, from_user_id: 4, to_user_id: 2)
+Message.create!(conversation: conversation4.to_json, from_user_id: 4, to_user_id: 1)
+Message.create!(conversation: conversation5.to_json, from_user_id: 5, to_user_id: 1)
 
 Request.create!(listing_id: 1, user_id: 2, message_id: 1, start_date: Time.new(2019, 11, 25), end_date: Time.new(2019, 11, 30))
 Request.create!(listing_id: 2, user_id: 3, message_id: 2, start_date: Time.new(2019, 11, 26), end_date: Time.new(2019, 11, 27))
