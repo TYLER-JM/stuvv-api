@@ -26,6 +26,7 @@ Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_in
 Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
 Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
 Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
+Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 5, price_per_day: rand(100..10000) )
 
 
 10.times do
@@ -81,3 +82,14 @@ Request.create!(listing_id: 3, user_id: 4, message_id: 3, start_date: Time.new(2
 Request.create!(listing_id: 1, user_id: 4, message_id: 4, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
 Request.create!(listing_id: 2, user_id: 5, message_id: 5, start_date: Time.new(2019, 12, 6), end_date: Time.new(2019, 12, 11))
 
+Message.create!(conversation: conversation1.to_json, from_user_id: 1, to_user_id: 2)
+Message.create!(conversation: conversation2.to_json, from_user_id: 1, to_user_id: 3)
+Message.create!(conversation: conversation3.to_json, from_user_id: 2, to_user_id: 4)
+Message.create!(conversation: conversation4.to_json, from_user_id: 1, to_user_id: 4)
+Message.create!(conversation: conversation5.to_json, from_user_id: 1, to_user_id: 5)
+
+Request.create!(listing_id: 3, user_id: 1, message_id: 6, start_date: Time.new(2019, 11, 25), end_date: Time.new(2019, 11, 30))
+Request.create!(listing_id: 6, user_id: 1, message_id: 7, start_date: Time.new(2019, 11, 26), end_date: Time.new(2019, 11, 27))
+Request.create!(listing_id: 8, user_id: 2, message_id: 8, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
+Request.create!(listing_id: 8, user_id: 1, message_id: 9, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
+Request.create!(listing_id: 11, user_id: 1, message_id: 10, start_date: Time.new(2019, 12, 6), end_date: Time.new(2019, 12, 11))

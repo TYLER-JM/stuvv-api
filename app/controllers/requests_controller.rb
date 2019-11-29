@@ -49,6 +49,6 @@ class RequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def request_params
-      params.require(:request).permit(:listing_id, :user_id, :start_date, :end_date, :approved)
+      params.require(:request).permit(:listing_id, :user_id, :start_date, :end_date, :approved, :message_id)
     end
 end
