@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
     # render json: @convo
 
     @convo = Message.where(to_user_id: params[:id])
+    # @user = User.find(from_user_id: params[:id])
     render 'show.json.jbuilder'
   end
 
