@@ -101,6 +101,7 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   def destroy
     @listing.destroy
+    render json: {:status => "item destroyed"}
   end
 
   private
