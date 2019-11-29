@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get '/usersrequests/:id' => 'users#users_requests'
 
+  get '/messages/inbound/:id' => 'messages#show_inbound'
+  get '/messages/outbound/:id' => 'messages#show_outbound'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
