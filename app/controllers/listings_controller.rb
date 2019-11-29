@@ -112,7 +112,8 @@ class ListingsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def listing_params
       params[:price_per_day] = params[:price_per_day].to_f.round(2) * 100
-      params.permit(:title, :description, :user_id, :price_per_day, :availability, :id)
+      params.permit(:title, :description, :user_id, :price_per_day, :availability)
+      # params.permit(:title, :description, :user_id, :price_per_day, :availability, :id)
       # params.required(:listing).permit(:title, :description, :user_id, :price_per_day, :availability, pics: [])
     end
 end
