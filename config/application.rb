@@ -29,7 +29,7 @@ module StuvvApi
         # origins '*'
         origins 'localhost:3001'
         # resource 'localhost:3001', headers: :any, methods: [:get, :post, :options], credentials: true
-        resource '*', headers: :any, methods: [:get, :post, :options, :put, :delete], credentials: true, expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
+        resource '*', headers: :any, methods: [:get, :post, :options, :put, :delete, :patch], credentials: true, expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
 
       end
     end
