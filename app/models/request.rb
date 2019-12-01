@@ -3,5 +3,5 @@ class Request < ApplicationRecord
   belongs_to :user
 
   #added
-  belongs_to :message
+  belongs_to :message, dependent: :destroy
 end
