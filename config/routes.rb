@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   get '/messages/inbound/:id' => 'messages#show_inbound'
   get '/messages/outbound/:id' => 'messages#show_outbound'
+
+  get '/requests/approved/:id' => 'requests#show_approved'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

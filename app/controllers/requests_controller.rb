@@ -16,6 +16,11 @@ class RequestsController < ApplicationController
     render json: @all_listing_requsts
   end
 
+  def show_approved
+    @all_listing_approved_requests = Request.where(["listing_id = ? and approved = ?", params[:id], 1])
+    render json: @all_listing_approved_requests
+  end
+
   # POST /requests
   def create
     @request = Request.new(request_params)
