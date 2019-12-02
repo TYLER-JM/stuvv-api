@@ -40,7 +40,7 @@ class ListingsController < ApplicationController
     
     if par
       par.each do |pic|
-        cloud = Cloudinary::Uploader.upload(pic.tempfile.path)
+        cloud = Cloudinary::Uploader.upload(pic.tempfile.path, :height=>600, :crop=>"scale")
 
         image_params = {
           url: cloud["secure_url"],
@@ -76,7 +76,7 @@ class ListingsController < ApplicationController
     
     if par 
       par.each do |pic|
-        cloud = Cloudinary::Uploader.upload(pic.tempfile.path)
+        cloud = Cloudinary::Uploader.upload(pic.tempfile.path, :height=>600, :crop=>"scale")
 
         image_params = {
           url: cloud["secure_url"],
