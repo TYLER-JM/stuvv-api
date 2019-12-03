@@ -13,83 +13,19 @@ require 'json'
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password", email: Faker::Internet.email)
 end
 
-# 10.times do
-# Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: rand(1..5), price_per_day: rand(100..10000) )
-# end
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 1, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 1, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 2, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 2, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 2, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 3, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 3, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 4, price_per_day: rand(100..10000) )
-Listing.create(title: Faker::Games::Dota.hero, description: Faker::Quote.most_interesting_man_in_the_world, user_id: 5, price_per_day: rand(100..10000) )
 
-
-10.times do
-  Image.create(url: Faker::LoremPixel.image(size: "300x300", is_gray: false, category: 'technics'), listing_id: rand(1..10) )
-end
-
-@user1 = User.find(1)
-@user2 = User.find(2)
-@user3 = User.find(3)
-@user4 = User.find(4)
-@user5 = User.find(5)
-
-conversation1 = [
-  {"sender": @user2.first_name, "content": "hi I want to rent your bike", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "no thanks, its not back", "sent": Time.now()},
-  {"sender": @user2.first_name, "content": "I will check back later", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "please do, bye now", "sent": Time.now()}
-]
-conversation2 = [
-  {"sender": @user3.first_name, "content": "im interested in your bbq", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "its available", "sent": Time.now()},
-  {"sender": @user3.first_name, "content": "thats great, thanks", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "take good care of her", "sent": Time.now()}
-]
-conversation3 = [
-  {"sender": @user4.first_name, "content": "is it available to rent", "sent": Time.now()},
-  {"sender": @user2.first_name, "content": "its available", "sent": Time.now()},
-  {"sender": @user4.first_name, "content": "thats great, thanks", "sent": Time.now()},
-  {"sender": @user2.first_name, "content": "take good care the thing you rent", "sent": Time.now()}
-]
-conversation4 = [
-  {"sender": @user4.first_name, "content": "can I rent please", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "its available", "sent": Time.now()},
-  {"sender": @user4.first_name, "content": "I don't want it", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "why not", "sent": Time.now()}
-]
-conversation5 = [
-  {"sender": @user5.first_name, "content": "I think it doesn't look good", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "it works fine", "sent": Time.now()},
-  {"sender": @user5.first_name, "content": "I'm not interesting", "sent": Time.now()},
-  {"sender": @user1.first_name, "content": "fine bye", "sent": Time.now()}
-]
-
-Message.create!(conversation: conversation1.to_json, from_user_id: 2, to_user_id: 1)
-Message.create!(conversation: conversation2.to_json, from_user_id: 3, to_user_id: 1)
-Message.create!(conversation: conversation3.to_json, from_user_id: 4, to_user_id: 2)
-Message.create!(conversation: conversation4.to_json, from_user_id: 4, to_user_id: 1)
-Message.create!(conversation: conversation5.to_json, from_user_id: 5, to_user_id: 1)
-
-Request.create!(listing_id: 1, user_id: 2, message_id: 1, start_date: Time.new(2019, 11, 25), end_date: Time.new(2019, 11, 30))
-Request.create!(listing_id: 2, user_id: 3, message_id: 2, start_date: Time.new(2019, 11, 26), end_date: Time.new(2019, 11, 27))
-Request.create!(listing_id: 3, user_id: 4, message_id: 3, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
-Request.create!(listing_id: 1, user_id: 4, message_id: 4, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
-Request.create!(listing_id: 2, user_id: 5, message_id: 5, start_date: Time.new(2019, 12, 6), end_date: Time.new(2019, 12, 11))
-
-Message.create!(conversation: conversation1.to_json, from_user_id: 1, to_user_id: 2)
-Message.create!(conversation: conversation2.to_json, from_user_id: 1, to_user_id: 3)
-Message.create!(conversation: conversation3.to_json, from_user_id: 2, to_user_id: 4)
-Message.create!(conversation: conversation4.to_json, from_user_id: 1, to_user_id: 4)
-Message.create!(conversation: conversation5.to_json, from_user_id: 1, to_user_id: 5)
-
-Request.create!(listing_id: 3, user_id: 1, message_id: 6, start_date: Time.new(2019, 11, 25), end_date: Time.new(2019, 11, 30))
-Request.create!(listing_id: 6, user_id: 1, message_id: 7, start_date: Time.new(2019, 11, 26), end_date: Time.new(2019, 11, 27))
-Request.create!(listing_id: 8, user_id: 2, message_id: 8, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
-Request.create!(listing_id: 8, user_id: 1, message_id: 9, start_date: Time.new(2019, 12, 5), end_date: Time.new(2019, 12, 10))
-Request.create!(listing_id: 11, user_id: 1, message_id: 10, start_date: Time.new(2019, 12, 6), end_date: Time.new(2019, 12, 11))
+Listing.create(title: "Awesome Grandma", description: "My Grandma is really nice and she tells good stories and she has a lot of free time. Comes with a sweet tooth, DON'T LET HER!" , user_id: 1, price_per_day: 100 )
+Listing.create(title: "5 speed bike", description: "Lightly used, good for the city or the track" , user_id: 1, price_per_day: 500 )
+Listing.create(title: "21 speed bike", description: "Almost brand new, I hardly use it", user_id: 2, price_per_day: 700 )
+Listing.create(title: "Sportek kid's bike", description: "My son grew out of this. I think it still works fine", user_id: 2, price_per_day: 400 )
+Listing.create(title: "Loving Grandma", description: "She bites!(Sometimes) She loves to bake and to knit", user_id: 2, price_per_day: 2000 )
+Listing.create(title: "Polaroid Camera", description: "Vintage polaroid camera. I took with me to Africa and the pic are awesome. (Sheets not included)", user_id: 3, price_per_day: 500 )
+Listing.create(title: "3-person Tent", description: "Squeeze 5 people in if you know each other well", user_id: 3, price_per_day: 600 )
+Listing.create(title: "Waterproof Tent", description: "Last time we used it, there was just a little bit of water inside. Other than that it works great, the fly tarp is very secure", user_id: 4, price_per_day: 800 )
+Listing.create(title: "Riding Lawnmower", description: "Price does not include gas but fill up before returning", user_id: 4, price_per_day: 1500 )
+Listing.create(title: "20L Bucket", description: "Good for garbage or feeding animals", user_id: 4, price_per_day: 200 )
+Listing.create(title: "Slop Bucket", description: "Comes with the slop", user_id: 5, price_per_day: 100 )
+Listing.create(title: "Adult pair of Skis", description: "Good for powder or groomed runs. Good balance, for a 5.5 to 6 feet tall ", user_id: 5, price_per_day: 5000 )
+Listing.create(title: "Camping Tent", description: "We used it once and we don't really like to camp, so it's almost brand new", user_id: 5, price_per_day: 500 )
+Listing.create(title: "High-heel Sandal", description: "Size 7, red, good for a night out, weddings and bat mitzvahs", user_id: 5, price_per_day: 2000 )
+Listing.create(title: "Comfy Chair", description: "You can lose many things on it but you might also find some coins", user_id: 5, price_per_day: 4000 )
