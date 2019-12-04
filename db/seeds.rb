@@ -9,9 +9,14 @@
 require 'faker'
 require 'json'
 
-5.times do
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password", email: Faker::Internet.email)
-end
+#5.times do
+  User.create!(first_name: "Truman", last_name: "Homenick", password: "password", email: "lair.heathcote@connharvey.com")
+  User.create!(first_name: "Doug", last_name: "Lubowitz", password: "password", email: "trey.anderson@tremblay.name")
+  User.create!(first_name: "Everette", last_name: "Schoen", password: "password", email: "christopher_hilll@nolan.info")
+  User.create!(first_name: "Dwight", last_name:"Bahringer", password: "password", email: "dorene@spencer.biz")
+  User.create!(first_name: "Rogelio", last_name: "Morissette", password: "password", email: "aliza@stamm.name")
+  #User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password", email: Faker::Internet.email)
+#end
 
 
 Listing.create(title: "Awesome Grandma", description: "My Grandma is really nice and she tells good stories and she has a lot of free time. Comes with a sweet tooth, DON'T LET HER!" , user_id: 1, price_per_day: 100 )
