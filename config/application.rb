@@ -27,7 +27,7 @@ module StuvvApi
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'https://nostalgic-hamilton-2713e6.netlify.com'
-        // origins '*'
+        #origins '*'
         #origins 'localhost:3001'
         # resource 'localhost:3001', headers: :any, methods: [:get, :post, :options], credentials: true
         resource '*', headers: :any, methods: [:get, :post, :options, :put, :delete, :patch], credentials: true, expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
