@@ -26,9 +26,9 @@ module StuvvApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://stuvv.netlify.com'
+        #origins 'https://stuvv.netlify.com'
         #origins '*'
-        #origins 'localhost:3001'
+        origins 'localhost:3001'
         # resource 'localhost:3001', headers: :any, methods: [:get, :post, :options], credentials: true
         resource '*', headers: :any, methods: [:get, :post, :options, :put, :delete, :patch], credentials: true, expose: ['access-token', 'expiry', 'token-type', 'uid', 'client']
 
